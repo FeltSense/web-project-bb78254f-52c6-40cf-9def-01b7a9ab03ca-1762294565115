@@ -1,0 +1,92 @@
+{
+  "componentsToGenerate": [
+    "Navigation",
+    "Hero",
+    "ClassSchedule",
+    "TrainerProfiles",
+    "MembershipPreview",
+    "Testimonials",
+    "StudioFeatures",
+    "TransformationGallery",
+    "ContactSection",
+    "PricingTiers",
+    "MembershipBenefits",
+    "FAQ",
+    "Footer"
+  ],
+  "estimatedChallenges": [
+    {
+      "component": "Navigation",
+      "challenge": "Multi-page navigation with active state and mobile menu",
+      "mitigation": "Use Next.js Link component with pathname detection, implement hamburger menu with state management for mobile"
+    },
+    {
+      "component": "ClassSchedule",
+      "challenge": "Complex grid layout with time slots and multiple classes",
+      "mitigation": "Use CSS Grid with proper responsive breakpoints, map through schedule data array with unique keys"
+    },
+    {
+      "component": "TrainerProfiles",
+      "challenge": "Image optimization and card layout consistency",
+      "mitigation": "Use Next.js Image component with proper sizing, flexbox/grid for responsive card layout"
+    },
+    {
+      "component": "PricingTiers",
+      "challenge": "Comparison table with feature checkmarks and highlighting popular plan",
+      "mitigation": "Use semantic table structure or grid layout, conditional styling for featured tier, icon library for checkmarks"
+    },
+    {
+      "component": "Testimonials",
+      "challenge": "Carousel/slider functionality without heavy dependencies",
+      "mitigation": "Implement simple CSS-based slider with overflow-x-scroll or basic state-based rotation"
+    },
+    {
+      "component": "ContactSection",
+      "challenge": "Form validation and submission handling",
+      "mitigation": "Use controlled inputs with useState, basic client-side validation, placeholder for form submission (no backend)"
+    },
+    {
+      "component": "Hero",
+      "challenge": "Full-screen background with overlay text and CTA positioning",
+      "mitigation": "Use background-image with overlay div, flexbox centering for content, ensure text contrast on black theme"
+    },
+    {
+      "component": "Footer",
+      "challenge": "Multi-column layout with social icons and links",
+      "mitigation": "CSS Grid for columns, responsive stacking on mobile, use SVG icons or icon library"
+    }
+  ],
+  "fixerContext": {
+    "expectedStructure": "Simple Next.js app. Components in components/ folder at root. app/page.tsx and app/pricing/page.tsx import from ../components/ and ../../components/ respectively",
+    "importPaths": "Use '../components/ComponentName' from app/page.tsx and '../../components/ComponentName' from app/pricing/page.tsx",
+    "commonIssues": [
+      "Missing 'use client' directive in components with interactivity (Navigation mobile menu, Testimonials carousel, ContactSection form)",
+      "Import path mismatches - ensure relative paths are correct for nested pages",
+      "Next.js Link component not imported from 'next/link'",
+      "Image component optimization - use next/image instead of img tags",
+      "Inconsistent styling between pages - ensure shared color variables or Tailwind classes",
+      "Navigation active state not working - need usePathname hook from next/navigation",
+      "Black theme contrast issues - ensure sufficient white/accent color contrast for readability",
+      "Mobile responsiveness - test hamburger menu, pricing table stacking, grid layouts",
+      "Missing key props in mapped components (ClassSchedule, TrainerProfiles, PricingTiers)",
+      "CSS conflicts between global styles and component styles"
+    ],
+    "designConsistency": [
+      "Both pages must use identical black background (#0a0a0a or #000000)",
+      "Same accent color (choose one: electric blue, neon green, or bold red) used consistently for CTAs and highlights",
+      "Identical header and footer components across both pages",
+      "Same font families and sizing hierarchy",
+      "Consistent button styles, hover effects, and transitions",
+      "Matching spacing and padding patterns",
+      "Same card/section styling approach"
+    ],
+    "contentConnections": [
+      "Home page 'View Membership Plans' button links to /pricing",
+      "Pricing page references classes and trainers from home page",
+      "Both pages mention 'Leo Lombardo' and 'Aflojale a la Toti' branding",
+      "Footer on both pages includes link to class schedule section on home",
+      "Consistent testimonial/social proof messaging across pages",
+      "Same contact information and location details"
+    ]
+  }
+}
